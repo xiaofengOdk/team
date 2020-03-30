@@ -18,10 +18,18 @@
 	<a href="{{url('login/tui')}}">退出</a>
 	<thead>
 		<tr >
+			@php $value=session('adminuser');
+			$value=$value->admin_grade;
+			@endphp
+			@if($value==1)
+			<th style="height: 80px;font-size: 20px;background-color:pink;"><a href="{{'visitor/index'}}">拜访会议</a></th>
+			<th style="font-size: 20px;background-color:pink;"><a href="{{'customer/index'}}">顾客</a></th>
+			@else
 			<th style="height: 80px;font-size: 20px;background-color:pink;"><a href="{{'visitor/index'}}">拜访会议</a></th>
 			<th style="font-size: 20px;background-color:pink;"><a href="{{'customer/index'}}">顾客</a></th>
 			<th style="font-size: 20px;background-color:pink;"><a href="{{'saleman/index'}}">业务员</a></th>
 			<th style="font-size: 20px;background-color:pink;"><a href="{{'admin/index'}}">Admin</a></th>
+			@endif
 		</tr>
 	</thead>
 </table>
