@@ -18,7 +18,7 @@
 		<select name="s_id">
 			<option value="">请选择</option>
 				@foreach($saleman_res as $k=>$v)
-			<option value="{{$v->s_id}}" {{$v->s_id==$res.s_id?"selected":""}}>{{$v->s_name}}</option>
+			<option value="{{$v->s_id}}" {{$v->s_id==$res->s_id?"selected":""}}>{{$v->s_name}}</option>
 				@endforeach
 		</select>
 				<b style="color:red"></b>
@@ -31,7 +31,7 @@
 			<select name="c_id">
 				<option value="">请选择</option>
 				@foreach($customer_res as $k=>$v)
-					<option value="{{$v->c_id}}" {{$v->c_id==$res.c_id?"selected":""}}>{{$v->c_name}}</option>
+					<option value="{{$v->c_id}}" {{$v->c_id==$res->c_id?"selected":""}}>{{$v->c_name}}</option>
 				@endforeach
 			</select>
 		</div>
