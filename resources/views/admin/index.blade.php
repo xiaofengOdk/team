@@ -7,6 +7,7 @@
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<a href="/"><h1 align="center" style="height: 40px;font-size: 20px;background-color:red;">跳回首页</h1></a>
 <body>
 	<a style="float:right" href="{{url('admin/create')}}" class="btn btn-default">添加</a>
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Visitor;
 use App\Customer;
 use App\Saleman;
+use Illuminate\validation\Rule;
 class VisitorController extends Controller
 {
     /**
@@ -64,8 +65,8 @@ class VisitorController extends Controller
      */
     public function score(Request $request)
     {
-        //
-         request()->validate([
+        // 
+       request()->validate([
 
             'v_address'=>'regex:/^[\x{4e00}-\x{9fa5}\w]{2,16}$/u',
             'v_desc'=>'required',
@@ -123,8 +124,7 @@ class VisitorController extends Controller
     public function update(Request $request, $id)
     {
         //echo $id;
-        request()->validate([
-
+         request()->validate([
             'v_address'=>'regex:/^[\x{4e00}-\x{9fa5}\w]{2,16}$/u',
             'v_desc'=>'required',
             'v_man'=>'required'
