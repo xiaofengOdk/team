@@ -36,7 +36,7 @@
 		<td>{{$v->admin_pwd}}</td>
 		<td>{{$v->admin_email}}</td>
 		<td>{{$v->admin_tel}}</td>
-		<td>{{$v->admin_grade}}</td>
+		<td>{{$v->admin_grade==1?'经理':'业务员'}}</td>
 		<td>
 			<a href="{{url('admin/edit/'.$v->admin_id)}}">编辑</a>
 			<a href="{{url('admin/destory/'.$v->admin_id)}}">删除</a>
