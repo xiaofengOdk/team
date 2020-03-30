@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Saleman;
+use Illuminate\validation\Rule;
 class SalemanController extends Controller
 {
     /**
@@ -50,6 +51,21 @@ class SalemanController extends Controller
     public function score(Request $request)
     {
         //
+
+        request()->validate([
+
+            's_name'=>'regex:/^[\x{4e00}-\x{9fa5}\w]{2,16}$/u|unique:saleman',
+            's_tel'=>'required|regex:/^1[3,5,6,7,8]\d{9}$/',
+            's_ptel'=>'required'
+            ]
+            ,[
+                's_name.regex'=>'管理员名字必须我中文，数字，字母，下划线2-16位',
+                's_name.unique'=>'名称已存在',
+                's_tel.required'=>'手机号不能为空',
+                's_tel.regex'=>'手机号不对',
+                's_ptel.required'=>'zuo机号不能为空',
+            ]);
+
         $data=request()->except('_token');
         // dd($data);
         $result=Saleman::create($data);
@@ -78,7 +94,6 @@ class SalemanController extends Controller
     public function edit($id)
     {
         //
-        // echo $id;
         $result=Saleman::find($id);
         return view('saleman.edit',['result'=>$result]);
     }
@@ -93,10 +108,28 @@ class SalemanController extends Controller
     public function update(Request $request, $id)
     {
         //
+         request()->validate([
+
+            's_name'=>['regex:/^[\x{4e00}-\x{9fa5}\w]{2,16}$/u',
+                Rule::unique('saleman')->ignore($id,'s_id'),
+        ],
+            's_tel'=>'required|regex:/^1[3,5,6,7,8]\d{9}$/',
+            's_ptel'=>'required'
+            ]
+            ,[
+                's_name.regex'=>'管理员名字必须我中文，数字，字母，下划线2-16位',
+                's_name.unique'=>'名称已存在',
+                's_tel.required'=>'手机号不能为空',
+                's_tel.regex'=>'手机号不对',
+                's_ptel.required'=>'zuo机号不能为空',
+            ]);
+
         $data=request()->except('_token');
         // dd($data);
+
         $result=Saleman::where("s_id",$id)->update($data);
-        if($result){
+        // dd($result);
+        if($result!==false){
             return redirect('saleman/index');
         }
     }
