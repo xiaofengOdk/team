@@ -16,7 +16,7 @@
 		<div class="col-sm-6">
 			@csrf
 			<input type="text" name="s_name">
-				<b style="color:red"></b>
+				<b style="color:red">{{$errors->first('s_name')}}</b>
 		</div>
 	</div>
 	<div class="form-group">
@@ -29,6 +29,7 @@
 	<div class="form-group">
 		<label for="lastname" class="col-sm-2 control-label">手机号</label>
 		<div class="col-sm-6">
+				<b style="color:red">{{$errors->first('s_tel')}}</b>
 			<input type="text" name="s_tel">
 		</div>
 	</div>
@@ -36,6 +37,7 @@
 		<label for="lastname" class="col-sm-2 control-label">座机号</label>
 		<div class="col-sm-6">
 			<input type="text" name="s_ptel">			
+				<b style="color:red">{{$errors->first('s_ptel')}}</b>
 		</div>
 	</div>
 	<div class="form-group">
