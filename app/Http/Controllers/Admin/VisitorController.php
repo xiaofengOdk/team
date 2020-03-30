@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Visitor;
 use App\Customer;
 use App\Saleman;
+use Illuminate\validation\Rule;
 class VisitorController extends Controller
 {
     /**
@@ -64,7 +65,18 @@ class VisitorController extends Controller
      */
     public function score(Request $request)
     {
-        //
+        // 
+       request()->validate([
+
+            'v_address'=>'regex:/^[\x{4e00}-\x{9fa5}\w]{2,16}$/u',
+            'v_desc'=>'required',
+            'v_man'=>'required'
+            ]
+            ,[
+                'v_address.regex'=>'地址必须是中文',
+                'v_desc.required'=>'描述不能为空',
+                'v_man.required'=>'拜访人不能为空',
+            ]);
         $data=request()->except('_token');
         $data['v_time']=time();
         $data['v_ntime']=time()+200000;
@@ -112,6 +124,17 @@ class VisitorController extends Controller
     public function update(Request $request, $id)
     {
         //echo $id;
+         request()->validate([
+
+            'v_address'=>'regex:/^[\x{4e00}-\x{9fa5}\w]{2,16}$/u',
+            'v_desc'=>'required',
+            'v_man'=>'required'
+            ]
+            ,[
+                'v_address.regex'=>'地址必须是中文',
+                'v_desc.required'=>'描述不能为空',
+                'v_man.required'=>'拜访人不能为空',
+            ]);
         $data=request()->except('_token');
          $data['v_time']=time();
         $data['v_ntime']=time()+200000;
