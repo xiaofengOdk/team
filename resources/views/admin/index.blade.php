@@ -22,7 +22,6 @@
 		<tr>
 			<th>id</th>
 			<th>管理员名称</th>
-			<th>管理员密码</th>
 			<th>邮箱</th>
 			<th>手机号</th>
 			<th>级别</th>
@@ -34,7 +33,6 @@
 		<tr>
 		<td>{{$v->admin_id}}</td>
 		<td>{{$v->admin_name}}</td>
-		<td>{{$v->admin_pwd}}</td>
 		<td>{{$v->admin_email}}</td>
 		<td>{{$v->admin_tel}}</td>
 		<td>{{$v->admin_grade==1?'经理':'业务员'}}</td>
