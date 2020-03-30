@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Visitor extends Model
 {
     //
-
-   protected $table="customer";
-   protected $primaryKey='c_id';
+   protected $table="visitor";
+   protected $primaryKey='v_id';
    public $timestamps=false;
    protected $guarded=[];
 }
