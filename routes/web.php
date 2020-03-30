@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 	Route::get('/',"Admin\IndexController@index")->middleware('islogin');
-Route::prefix('/visitor')->group(function(){
+Route::prefix('/visitor')->middleware('islogin')->group(function(){
 	Route::get('/create',"Admin\VisitorController@create");
 	Route::post('/score',"Admin\VisitorController@score");
 	Route::get('/index',"Admin\VisitorController@index");
@@ -33,14 +33,14 @@ Route::prefix('/login')->group(function(){
 
 
 
-Route::get('/customer/create','CustomerController@create');
-Route::post('/customer/store','CustomerController@store');
-Route::get('/customer/index','CustomerController@index');
-Route::any('/customer/destroy/{c_id}','CustomerController@destroy');
-Route::any('/customer/edit/{c_id}','CustomerController@edit');
-Route::any('/customer/update/{c_id}','CustomerController@update');
+Route::get('/customer/create','CustomerController@create')->middleware('islogin');
+Route::post('/customer/store','CustomerController@store')->middleware('islogin');
+Route::get('/customer/index','CustomerController@index')->middleware('islogin');
+Route::any('/customer/destroy/{c_id}','CustomerController@destroy')->middleware('islogin');
+Route::any('/customer/edit/{c_id}','CustomerController@edit')->middleware('islogin');
+Route::any('/customer/update/{c_id}','CustomerController@update')->middleware('islogin');
 
-Route::prefix('/saleman')->group(function(){
+Route::prefix('/saleman')->middleware('islogin')->group(function(){
 	Route::get('/create',"Admin\SalemanController@create");
 	Route::post('/score',"Admin\SalemanController@score");
 	Route::get('/index',"Admin\SalemanController@index");
@@ -50,7 +50,7 @@ Route::prefix('/saleman')->group(function(){
 
 });
 //后台管理员
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('islogin')->group(function(){
 	Route::get('create','AdminController@create');
 	Route::post('store','AdminController@store');
 	Route::get('index','AdminController@index');
