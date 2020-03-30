@@ -40,19 +40,22 @@
 		<label for="lastname" class="col-sm-2 control-label">访问人</label>
 		<div class="col-sm-6">
 			<input type="text" name="v_man" value="{{$res->v_man}}">
+				{{$errors->first('v_man')}}
 		</div>
 	</div>
 		<div class="form-group">
 		<label for="lastname" class="col-sm-2 control-label">访问地址</label>
 		<div class="col-sm-6">
 			<input type="text" name="v_address"value="{{$res->v_address}}">			
+				{{$errors->first('v_address')}}
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="lastname" class="col-sm-2 control-label">访问详情</label>
 		<div class="col-sm-6">
 			<input type="text" name="v_desc"value="{{$res->v_desc}}">
-			<b style="color:red"></b>
+			<b style="color:red">{{$errors->first('v_desc')}}
+</b>
 
 		</div>
 	</div>
