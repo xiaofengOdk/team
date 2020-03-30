@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//后台管理员
+Route::prefix('admin')->group(function(){
+	Route::get('create','AdminController@create');
+	Route::post('store','AdminController@store');
+	Route::get('index','AdminController@index');
+	Route::get('destroy,{id}','AdminController@destroy');
+	Route::get('edit/{id}','AdminController@edit');
+	Route::post('update/{id}','AdminController@update');
+
+});	
+
+
+
