@@ -11,6 +11,11 @@
 
 <table class="table table-bordered"  width="200px" height="200px">
 	<h1 align="center">合作中心</h1>
+	@php $name=session('adminuser');
+	$name=$name->admin_name;
+	 @endphp
+	欢迎{{$name}}登录
+	<a href="{{url('login/tui')}}">退出</a>
 	<thead>
 		<tr >
 			<th style="height: 80px;font-size: 20px;background-color:pink;"><a href="{{'visitor/index'}}">拜访会议</a></th>
