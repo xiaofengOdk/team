@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-	Route::get('/',"Admin\IndexController@index");
+	Route::get('/',"Admin\IndexController@index")->middleware('islogin');
 Route::prefix('/visitor')->group(function(){
 	Route::get('/create',"Admin\VisitorController@create");
 	Route::post('/score',"Admin\VisitorController@score");
@@ -23,7 +23,12 @@ Route::prefix('/visitor')->group(function(){
 	Route::get('/destroy/{id}',"Admin\VisitorController@destroy");
 	Route::post('/update/{id}',"Admin\VisitorController@update");
 });
+Route::prefix('/login')->group(function(){
+	Route::get('/index',"Admin\LoginController@index");
+	Route::get('/tui',"Admin\LoginController@tui");
+	Route::post('/score',"Admin\LoginController@score");
 
+});
 
 
 
