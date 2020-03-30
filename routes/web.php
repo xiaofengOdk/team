@@ -14,6 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+	Route::get('/',"Admin\IndexController@index");
 Route::prefix('/visitor')->group(function(){
 	Route::get('/create',"Admin\VisitorController@create");
 	Route::post('/score',"Admin\VisitorController@score");
