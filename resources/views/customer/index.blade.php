@@ -32,7 +32,7 @@
 				<td>{{$v->c_name}}</td>
 				<td>{{$v->c_grade}}</td>
 				<td>{{$v->c_from}}</td>
-				<td>{{$v->s_id}}</td>
+				<td>{{$v->s_name}}</td>
 				<td>{{$v->c_tel}}</td>
 				<td>{{$v->c_ptel}}</td>
 				<td>
