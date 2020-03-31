@@ -24,9 +24,10 @@ class SalemanController extends Controller
             ];
         }
         $query=request()->all();
-        $result=Saleman::get();
+        $result=Saleman::where($where)->paginate(2);
+        // dd($result);
         if(request()->ajax()){
-             return view('saleman/indexpaage',['result'=>$result,'query'=>$query]);
+             return view('saleman/indexpage',['result'=>$result,'query'=>$query]);
         }
         return view('saleman/index',['result'=>$result,'query'=>$query]);
     }
