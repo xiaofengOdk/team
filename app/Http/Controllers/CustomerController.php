@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Customer;
+use App\Saleman;
 class CustomerController extends Controller           
 {
     public function index()
     {
-    	$customer=Customer::paginate(3);
+    	$customer=Customer::
+        leftjoin('saleman',"customer.s_id","=","saleman.s_id")
+        ->paginate(3);
       return view('customer.index',['customer'=>$customer]);
     }
 
@@ -20,7 +23,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return  view('customer.create');
+        $res=Saleman::get();
+        return  view('customer.create',['res'=>$res]);
     }
 
     /**
@@ -61,9 +65,10 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($c_id)
-    {
+    {        
+        $res=Saleman::get();
        $customer=Customer::where('c_id',$c_id)->first();
-        return view('customer.edit',['customer'=>$customer]);
+        return view('customer.edit',['customer'=>$customer,'res'=>$res]);
     }
 
     /**
