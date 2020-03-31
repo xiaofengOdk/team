@@ -53,11 +53,11 @@
 	<div class="form-group">
 		<label for="lastname" class="col-sm-2 control-label">业务员</label>
 		<div class="col-sm-6">
-			<select class="form-control" name="c_from">
+			<select class="form-control" name="s_id">
 					<option value="">请选择</option>
-					
-					<option value=""></option>
-					
+						@foreach($res as $k=>$v)
+					<option value="{{$v->s_id}}">{{$v->s_name}}</option>
+						@endforeach
 			</select>
 		</div>
 	</div>
