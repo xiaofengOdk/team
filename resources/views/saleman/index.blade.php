@@ -14,7 +14,7 @@
 	<caption>业务员显示的数据</caption>
 	<a style="float:right" href="{{url('saleman/create')}}" class="btn btn-default">添加</a>
 	<form>
-		名称<input type="text" name="s_man" value="{{$query['s_name']??''}}">
+		名称<input type="text" name="s_name" value="{{$query['s_name']??''}}">
 		<input type="submit" value="搜索">
 	</form>
 	<thead>
@@ -43,6 +43,7 @@
 		@endforeach
 	</tbody>
 </table>
+{{$result->appends($query)->links()}}
 </body>
 </html>
 <script type="text/javascript" src="{{asset('static/admin/js/jquery.js')}}"></script>
