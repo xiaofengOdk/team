@@ -73,7 +73,7 @@ class AdminController extends Controller
 
         $post=request()->except('_token');
         // dd($post);
-         $post['admin_pwd']=md5($post['admin_pwd']);
+         $post['admin_pwd']=encrypt($post['admin_pwd']);
         $res=Admin::insert($post);
         // dd($res);
         if($res){
