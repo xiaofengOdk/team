@@ -59,6 +59,13 @@ Route::prefix('admin')->middleware('islogin')->group(function(){
 	Route::post('update/{id}','AdminController@update');
 
 });	
+Route::prefix('new')->middleware('is_login')->group(function(){
+	Route::get('/create','NewController@create');
+	Route::post('/store','NewController@store');
+	Route::get('/index','NewController@index');
+	
 
+});
 
-
+Route::get('new/loginindex','LoginController@loginindex');
+Route::post('new/score','LoginController@loginstore');
